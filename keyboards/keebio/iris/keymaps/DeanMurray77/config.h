@@ -23,4 +23,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define ONESHOT_TIMEOUT 5000  /* Time (in ms) before the one shot key is released */
 
 #define IGNORE_MOD_TAP_INTERRUPT
-#define TAPPING_TERM 250
+#define TAPPING_TERM 225
