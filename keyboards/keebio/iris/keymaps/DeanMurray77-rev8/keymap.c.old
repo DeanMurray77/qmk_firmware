@@ -1,0 +1,60 @@
+#include QMK_KEYBOARD_H
+
+// Define the custom keycode
+enum custom_keycodes {
+    LCTL_T_O = SAFE_RANGE,  // This is the custom keycode for LCTL_T(KC_O)
+};
+
+// Process the custom keycode
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LCTL_T_O:
+            if (record->event.pressed) {
+                // If the key is pressed, send LCTL + O
+                register_mods(MOD_LCTL);
+                tap_code(KC_O);
+            } else {
+                // If the key is released, send LCTL
+                unregister_mods(MOD_LCTL);
+            }
+            return false;  // Return false to prevent further processing
+        case LALT_T_E:
+            if (record->event.pressed) {
+              // If the key is pressed, send LCTL + O
+              register_mods(MOD_LALT);
+              tap_code(KC_E);
+            } else {
+                // If the key is released, send LCTL
+                unregister_mods(MOD_LALT);
+            }
+            return false;  // Return false to prevent further processing
+        case LGUI_T_U:
+            if (record->event.pressed) {
+              // If the key is pressed, send LCTL + O
+              register_mods(MOD_LGUI);
+              tap_code(KC_U);
+            } else {
+                // If the key is released, send LCTL
+                unregister_mods(MOD_LCTL);
+            }
+            return false;  // Return false to prevent further processing
+        default:
+            return true;  // All other keycodes are processed normally
+    }
+}
+
+void tapdance_actions(qk_tapdance_state_t *state, uint8_t id) {
+  switch (id) {
+      case 0:
+          if (state->count == 1) {
+              // Single tap - comma
+              tap_code(KC_COMM);
+          } else if (state->count == 2) {
+              // Double tap - question mark
+              tap_code(KC_QUES);
+          }
+          break;
+      case 1:
+          
+  }
+}
