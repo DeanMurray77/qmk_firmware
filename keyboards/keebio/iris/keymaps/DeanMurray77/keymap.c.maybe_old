@@ -1,9 +1,5 @@
-// This is for the silver keyboard, not the black one.
-// /Users/deanmurray/Services/qmk_firmware/keyboards/keebio/iris/keymaps/DeanMurray77/keymap.c
 // qmk compile -kb keebio/iris/rev5 -km DeanMurray77
 // File location: /Users/deanmurray/qmk_firmware/keebio_iris_rev5_DeanMurray77.hex
-// For this one, you have to use  qmk toolbox in order to load the file up. Push the reset button and you should
-// see the toolbox say that it's ready to be flashed.
 
 #include QMK_KEYBOARD_H
 
@@ -70,6 +66,7 @@ void vlashCmd_reset(qk_tap_dance_state_t *state, void *user_data);
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+
   [_ALPHA] = LAYOUT( // 0
   //┌─────────┬─────────────────┬───────────────────┬─────────────┬─────────────┬─────────────┐                       ┌─────┬─────────────┬─────────────┬─────────────┬──────┬──────────┐
      KC_NO,    KC_1,             KC_2,               KC_3,         KC_4,         KC_5,                                 KC_6, KC_7,         KC_8,         KC_9,         KC_0,  KC_NO,
@@ -78,7 +75,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├─────────┼─────────────────┼───────────────────┼─────────────┼─────────────┼─────────────┤                       ├─────┼─────────────┼─────────────┼─────────────┼──────┼──────────┤
      KC_EQL,   KC_A,             LCTL_T(KC_O),       LALT_T(KC_E), LGUI_T(KC_U), KC_I,                                 KC_D, LGUI_T(KC_H), LALT_T(KC_T), LCTL_T(KC_N), KC_S,  KC_MINS,
   //├─────────┼─────────────────┼───────────────────┼─────────────┼─────────────┼─────────────┼────────┐     ┌────────┼─────┼─────────────┼─────────────┼─────────────┼──────┼──────────┤
-     KC_LSFT, TD(TD_SLASH_CMD), KC_Q,               KC_J,         KC_K,         TD(TD_X_CMD), KC_VOLD,       KC_VOLU, KC_B, KC_M,         KC_W,         TD(TD_V_CMD), KC_Z,  KC_RSFT,
+     OSM_LSFT, TD(TD_SLASH_CMD), KC_Q,               KC_J,         KC_K,         TD(TD_X_CMD), KC_VOLD,       KC_VOLU, KC_B, KC_M,         KC_W,         TD(TD_V_CMD), KC_Z,  OSM_LSFT,
   //└─────────┴─────────────────┴───────────────────┴─────────────┼────────┬────┴───┬────────┬┴────────┘     └───┬────┴───┬─┴──────┬──────┴─┬───────────┴─────────────┴──────┴──────────┘                               
                                                                    KC_ESC,  KC_ENT,  OSL(2),                      MO(1),   KC_SPC,   KC_DEL
                                                                // └────────┴────────┴────────┘                   └────────┴────────┴────────┘
@@ -114,7 +111,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_SUPER_NAV] = LAYOUT( // 3
   //┌───────┬───────┬───────┬───────┬───────┬───────┐                   ┌────────┬────────┬────────┬───────┬─────────┬────────┐
-     TO(0),  TO(0),  TO(0),  TO(0),  TO(0),  TO(0),                      RGB_VAI,  TO(0),   TO(0),   TO(0),  TO(0),    TO(0),
+     TO(0),  TO(0),  TO(0),  TO(0),  TO(0),  TO(0),                      TO(0),   TO(0),   TO(0),   TO(0),  TO(0),    TO(0),
   //├───────┼───────┼───────┼───────┼───────┼───────┤                   ├────────┼────────┼────────┼───────┼─────────┼────────┤
      TO(0),  TO(0),  TO(0),  TO(0),  TO(0),  TO(0),                      RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_M_P, RGB_M_G,
   //├───────┼───────┼───────┼───────┼───────┼───────┤                   ├────────┼────────┼────────┼───────┼─────────┼────────┤
@@ -162,9 +159,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├──────┼────────┼──────┼──────┼──────┼────────┤                      ├─────┼─────┼────────┼────────┼────────┼────────┤
      KC_CAPS, KC_A,  KC_S,  KC_D,  KC_F,  KC_G,                           KC_H, KC_J, KC_K,    KC_L,    KC_SCLN, KC_ENT,
   //├──────┼────────┼──────┼──────┼──────┼────────┼────────┐    ┌────────┼─────┼─────┼────────┼────────┼────────┼────────┤
-     KC_LSFT, KC_Z,  KC_X,  KC_C,  KC_V,  KC_B,    KC_LALT,        KC_RALT,   KC_N, KC_M, KC_COMM, KC_DOT,  TO(0),   KC_SLSH,
+     KC_LSFT, KC_Z,  KC_X,  KC_C,  KC_V,  KC_B,    KC_NO,        KC_NO,   KC_N, KC_M, KC_COMM, KC_DOT,  TO(0),   KC_SLSH,
   //└──────┴────────┴──────┴───┬──┴────┬─┴──────┬─┴───┬────┘    └───┬────┴───┬─┴─────┼────────┼────────┴────────┴────────┘
-                                KC_ESC, KC_SPC,  KC_RCTL,                KC_LCTL, KC_SPC,  KC_DEL
+                                KC_ESC, KC_SPC,  KC_MPLY,                KC_NO, KC_SPC,  KC_DEL
                             // └───────┴────────┴─────┘             └────────┴───────┴────────┘
   ),
 
